@@ -88,10 +88,11 @@ public class SpecialRoutesFilter extends ZuulFilter {
 
     private String buildRouteString(String oldEndpoint, String newEndpoint, String serviceName){
         int index = oldEndpoint.indexOf(serviceName);
-        logger.debug("oldEndpoint: newEndpoint: serviceName in tracking filter: {}:{}:{}. ", oldEndpoint, newEndpoint, serviceName);
+        logger.debug("oldEndpoint: newEndpoint: serviceName in SpecialRoutesFilter filter: {}:{}:{}. ", oldEndpoint, newEndpoint, serviceName);
 
         String strippedRoute = oldEndpoint.substring(index + serviceName.length());
         System.out.println("Target route: " + String.format("%s/%s", newEndpoint, strippedRoute));
+        logger.debug("Target route: {}. ",  String.format("%s/%s", newEndpoint, strippedRoute));
         return String.format("%s/%s", newEndpoint, strippedRoute);
     }
 
